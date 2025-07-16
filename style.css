@@ -1,0 +1,17 @@
+body { font-family: sans-serif; margin:0; }
+#drop-zone {
+  padding: 2rem;
+  border: 2px dashed #888;
+  text-align: center;
+  cursor: pointer;
+}
+#app { display: flex; height: calc(100vh - 6rem); }
+#file-list {
+  width: 200px; overflow-y: auto; border-right: 1px solid #ccc; padding:1rem;
+}
+#preview {
+  flex:1; padding:1rem; overflow-y: auto; white-space: pre-wrap;
+  background:#f9f9f9;
+}
+/* highlight drop */
+#drop-zone.dragover { background: #eef; }
