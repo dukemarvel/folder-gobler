@@ -22,3 +22,20 @@ input.addEventListener('change', () => {
     fileList.appendChild(li);
   });
 });
+
+fileList.addEventListener('click', async e => {
+  if (!e.target.dataset.path) return;
+  const file = Array.from(input.files)
+    .find(f => f.webkitRelativePath === e.target.dataset.path);
+  const text = await file.text();
+  preview.innerText = `${file.name}:\n${text}`;
+});
+
+// automatically show all in one go
+document.getElementById('preview-all')?.addEventListener('click', async () => {
+  let out = '';
+  for (let f of input.files) {
+    out += `${f.name}:\n${await f.text()}\n\n`;
+  }
+  preview.innerText = out.trim();
+});
